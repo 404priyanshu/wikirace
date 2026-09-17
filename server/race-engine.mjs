@@ -1,8 +1,10 @@
 import { chooseWithGpt, chooseWithJev } from "./models.mjs";
 import { getArticle, resolveArticle } from "./wikipedia.mjs";
 
-const BATCH_SIZE = 60;
-const MAX_LINKS = 300;
+// Jev accepts at most 255 choices per question, so that is the shared ceiling.
+// Both racers see the same first N links in the order the page renders them,
+// which is what a person scanning the article from the top would meet first.
+const MAX_LINKS = Number(process.env.MAX_LINKS || 255);
 
 const agents = {
   gpt: { choose: chooseWithGpt },
@@ -13,12 +15,6 @@ function normalize(title) {
   return title.trim().replaceAll("_", " ").toLocaleLowerCase();
 }
 
-function chunk(items, size) {
-  return Array.from({ length: Math.ceil(items.length / size) }, (_, index) =>
-    items.slice(index * size, index * size + size),
-  );
-}
-
 async function selectLink({ agentId, current, target, links, emit, signal }) {
   if (signal.aborted) throw new Error("Race cancelled");
   const direct = links.find((link) => normalize(link) === normalize(target));
@@ -27,35 +23,16 @@ async function selectLink({ agentId, current, target, links, emit, signal }) {
     return { choice: direct, calls: 0, modelMs: 0 };
   }
 
-  const choose = agents[agentId].choose;
-  const batches = chunk(links.slice(0, MAX_LINKS), BATCH_SIZE);
-  if (!batches.length) throw new Error("No eligible Wikipedia links found");
+  const choices = links.slice(0, MAX_LINKS);
+  if (!choices.length) throw new Error("No eligible Wikipedia links found");
 
-  let calls = 0;
-  let modelMs = 0;
-  emit({
-    type: "agent_status",
-    agentId,
-    status: `Judging ${batches.length} link sets in parallel`,
-  });
-  const finalists = await Promise.all(
-    batches.map(async (batch) => {
-      const result = await choose({ current, target, choices: batch });
-      calls += 1;
-      modelMs += result.elapsedMs;
-      emit({ type: "agent_call", agentId, calls, modelMs });
-      return result.choice;
-    }),
-  );
-
-  if (finalists.length === 1) return { choice: finalists[0], calls, modelMs };
-
-  emit({ type: "agent_status", agentId, status: "Choosing the strongest route" });
-  const final = await choose({ current, target, choices: finalists });
-  calls += 1;
-  modelMs += final.elapsedMs;
-  emit({ type: "agent_call", agentId, calls, modelMs });
-  return { choice: final.choice, calls, modelMs };
+  // One judgment per hop, over the identical candidate list for both racers.
+  // Splitting into batches would inflate the call count and turn a per-call
+  // latency difference into a wall-clock difference that the batching invented.
+  emit({ type: "agent_status", agentId, status: `Judging ${choices.length} links` });
+  const result = await agents[agentId].choose({ current, target, choices });
+  emit({ type: "agent_call", agentId, calls: 1, modelMs: result.elapsedMs });
+  return { choice: result.choice, calls: 1, modelMs: result.elapsedMs };
 }
 
 async function runAgent({ agentId, start, target, maxHops, emit, signal }) {

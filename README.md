@@ -48,4 +48,4 @@ npm test
 
 ## Race format
 
-Wikipedia article links come from the Action API's `action=parse&prop=links`, which returns the page's link list without the rendered HTML (~20x smaller). They are filtered to existing main-namespace articles and capped at 300 candidates per hop. Each model judges identical-size 60-link batches in parallel, then selects from the batch winners. A direct link to the target is followed without a model call.
+Wikipedia article links are read from the rendered article HTML in the order the page displays them, filtered to main-namespace articles, and capped at 255 candidates per hop (Jev's per-question ceiling, applied equally to both racers). Each model makes exactly one judgment per hop over the identical candidate list. Batching the candidates would multiply a per-call latency difference into a wall-clock difference created by the harness rather than the models. A direct link to the target is followed without a model call.
