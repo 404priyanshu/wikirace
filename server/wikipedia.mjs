@@ -1,5 +1,3 @@
-import * as cheerio from "cheerio";
-
 const WIKI_API = "https://en.wikipedia.org/w/api.php";
 const USER_AGENT = "WikiRaceDemo/1.0 (local demo; fair AI navigation benchmark)";
 const REQUEST_TIMEOUT_MS = 15_000;
@@ -116,11 +114,9 @@ export async function resolveArticle(title, { signal } = {}) {
   return page.title;
 }
 
-function isArticleLink(href) {
-  if (!href?.startsWith("/wiki/")) return false;
-  const raw = href.slice(6).split("#")[0].split("?")[0];
-  if (!raw || raw.includes(":")) return false;
-  return !raw.startsWith("Main_Page");
+/** Main-namespace links to pages that actually exist (redlinks omit `exists`). */
+function isArticleLink(link) {
+  return link?.ns === 0 && "exists" in link && link.title && link.title !== "Main Page";
 }
 
 export async function getArticle(title, { signal } = {}) {
@@ -128,11 +124,13 @@ export async function getArticle(title, { signal } = {}) {
   if (pageCache.has(requestedTitle)) return pageCache.get(requestedTitle);
 
   const promise = (async () => {
+    // `prop=links` gives the same page-order link list as the rendered HTML at
+    // roughly 1/20th the payload, so there is no document to parse.
     const payload = await wikiFetch(
       {
         action: "parse",
         page: requestedTitle,
-        prop: "text",
+        prop: "links",
         redirects: "1",
         formatversion: "2",
       },
@@ -140,27 +138,19 @@ export async function getArticle(title, { signal } = {}) {
     );
     const canonical = payload.parse?.title || requestedTitle;
     pageCache.set(canonical, promise);
-    const html = payload.parse?.text;
-    if (!html) throw new Error(`Could not read Wikipedia article “${canonical}”`);
 
-    const $ = cheerio.load(html);
+    const raw = payload.parse?.links;
+    if (!Array.isArray(raw)) throw new Error(`Could not read Wikipedia article \u201C${canonical}\u201D`);
+
     const links = [];
     const seen = new Set([canonical.toLowerCase()]);
-    $(".mw-parser-output a").each((_, element) => {
-      const href = $(element).attr("href");
-      if (!isArticleLink(href)) return;
-      const slug = href.slice(6).split("#")[0].split("?")[0];
-      let linkedTitle;
-      try {
-        linkedTitle = decodeURIComponent(slug).replaceAll("_", " ");
-      } catch {
-        return;
-      }
-      const key = linkedTitle.toLowerCase();
-      if (seen.has(key)) return;
+    for (const link of raw) {
+      if (!isArticleLink(link)) continue;
+      const key = link.title.toLowerCase();
+      if (seen.has(key)) continue;
       seen.add(key);
-      links.push(linkedTitle);
-    });
+      links.push(link.title);
+    }
 
     return { title: canonical, links };
   })();
@@ -173,3 +163,4 @@ export async function getArticle(title, { signal } = {}) {
     throw error;
   }
 }
+

@@ -1,7 +1,18 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it } from "node:test";
 import { config } from "./config.mjs";
-import { _resetMemory, budgetStatus, claimRaceSlot, clientIp } from "./rate-limit.mjs";
+// The store is chosen at import time from config, and a developer's .env may
+// carry real Upstash credentials. Blank them first so this suite always exercises
+// the in-memory store and never mutates a live rate-limit budget.
+const realUrl = config.upstashUrl;
+const realToken = config.upstashToken;
+config.upstashUrl = "";
+config.upstashToken = "";
+const { _resetMemory, budgetStatus, claimRaceSlot, clientIp } = await import(
+  `./rate-limit.mjs?memory=${Math.random()}`
+);
+config.upstashUrl = realUrl;
+config.upstashToken = realToken;
 
 // Each test uses a distinct IP so per-IP windows stay independent.
 let ipCounter = 0;
