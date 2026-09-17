@@ -10,7 +10,7 @@ function wikipediaUrl(article) {
   return `https://en.wikipedia.org/wiki/${encodeURIComponent(article.replaceAll(" ", "_"))}`;
 }
 
-export function RaceLane({ agentId, label, subtitle, agent, target, winner }) {
+export function RaceLane({ agentId, label, subtitle, agent, target, optimal, winner }) {
   const running = agent.phase === "running";
   const steps =
     agent.steps ||
@@ -53,7 +53,16 @@ export function RaceLane({ agentId, label, subtitle, agent, target, winner }) {
       <div className="telemetry">
         <div>
           <span>HOPS</span>
-          <strong>{String(agent.hops).padStart(2, "0")}</strong>
+          <strong>
+            {String(agent.hops).padStart(2, "0")}
+            {optimal && agent.result === "finished" && (
+              <em className={agent.hops === optimal.depth ? "is-optimal" : ""}>
+                {agent.hops === optimal.depth
+                  ? "OPTIMAL"
+                  : `+${agent.hops - optimal.depth} vs best`}
+              </em>
+            )}
+          </strong>
         </div>
         <div>
           <span>MODEL CALLS</span>
@@ -81,7 +90,7 @@ export function RaceLane({ agentId, label, subtitle, agent, target, winner }) {
         )}
       </div>
       {hasPath ? (
-        <HopRail steps={steps} target={target} phase={agent.phase} result={agent.result} />
+        <HopRail steps={steps} target={target} phase={agent.phase} result={agent.result} optimal={optimal} />
       ) : (
         <div className="empty-route">
           <Flag aria-hidden="true" size={17} />

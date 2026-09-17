@@ -160,8 +160,43 @@ async function scoreResults(file) {
   console.log(`\nwrote ${out}`);
 }
 
+/** Write optimal routes the server can look up instantly at race time. */
+async function precompute(outPath) {
+  const { PAIRS } = await import("./pairs.mjs");
+  const gapMs = Number(process.env.SHORTEST_GAP_MS || 8_000);
+  const existing = fs.existsSync(outPath)
+    ? JSON.parse(fs.readFileSync(outPath, "utf8"))
+    : { maxLinks: MAX_LINKS, routes: {} };
+  // A route found under a different candidate cap describes a different graph.
+  const routes = existing.maxLinks === MAX_LINKS ? existing.routes : {};
+
+  for (const [index, [from, to]] of PAIRS.entries()) {
+    // Resumable: a long precompute gets interrupted by Wikipedia throttling.
+    if (routes[`${norm(from)}|${norm(to)}`]) {
+      console.log(`${from} -> ${to}: cached`);
+      continue;
+    }
+    const result = await shortestPath(from, to);
+    const key = `${norm(result.source)}|${norm(result.target)}`;
+    if (typeof result.depth === "number") {
+      routes[key] = { source: result.source, target: result.target, depth: result.depth, path: result.path };
+      console.log(`${result.source} -> ${result.target}: ${result.depth} hops [${result.fetches} fetches]`);
+    } else {
+      console.log(`${result.source} -> ${result.target}: not resolved (${result.reason})`);
+    }
+    fs.writeFileSync(
+      outPath,
+      `${JSON.stringify({ maxLinks: MAX_LINKS, computedAt: new Date().toISOString(), routes }, null, 2)}\n`,
+    );
+    if (index < PAIRS.length - 1) await new Promise((r) => setTimeout(r, gapMs));
+  }
+  console.log(`\nwrote ${outPath}`);
+}
+
 const args = process.argv.slice(2);
-if (args[0] === "--score") {
+if (args[0] === "--precompute") {
+  await precompute(args[1] || "server/optimal-routes.json");
+} else if (args[0] === "--score") {
   await scoreResults(args[1]);
 } else if (args.length >= 2) {
   const result = await shortestPath(args[0], args[1]);

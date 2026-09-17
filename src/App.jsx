@@ -94,6 +94,7 @@ export default function App() {
           subtitle="GENERAL REASONING MODEL"
           agent={race.agents.gpt}
           target={race.target}
+          optimal={race.optimal}
           winner={winner === "gpt"}
         />
         <div className="versus" aria-hidden="true">
@@ -105,6 +106,7 @@ export default function App() {
           subtitle="SYSTEM ONE NAVIGATOR"
           agent={race.agents.jev}
           target={race.target}
+          optimal={race.optimal}
           winner={winner === "jev"}
         />
       </section>

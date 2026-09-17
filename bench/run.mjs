@@ -10,20 +10,7 @@ const { config } = await import("../server/config.mjs");
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const PAIRS = [
-  ["Coffee", "Artificial intelligence"],
-  ["Sourdough", "Riemann hypothesis"],
-  ["Bicycle", "Photosynthesis"],
-  ["Jazz", "Plate tectonics"],
-  ["Iceland", "Cryptography"],
-  ["Origami", "Immune system"],
-  ["Chess", "Antibiotic"],
-  ["Lighthouse", "Genetics"],
-  ["Pottery", "Black hole"],
-  ["Tea", "Machine learning"],
-  ["Volcano", "Linguistics"],
-  ["Violin", "Vaccine"],
-];
+const { PAIRS } = await import("./pairs.mjs");
 
 const MAX_HOPS = Number(process.env.BENCH_MAX_HOPS || 12);
 const LABEL = process.env.BENCH_LABEL || `gpt-${config.gptReasoningEffort}`;

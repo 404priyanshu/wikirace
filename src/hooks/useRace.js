@@ -23,6 +23,7 @@ const initialState = {
   maxHops: 12,
   startedAt: null,
   agents: { gpt: { ...initialAgent }, jev: { ...initialAgent } },
+  optimal: null,
   error: "",
 };
 
@@ -67,6 +68,9 @@ function applyEvent(state, event) {
       startedAt: event.startedAt,
       error: "",
     };
+  }
+  if (event.type === "race_optimal") {
+    return { ...state, optimal: { depth: event.depth, path: event.path } };
   }
   if (event.type === "race_complete") return { ...state, phase: "complete" };
   if (event.type === "race_error") {

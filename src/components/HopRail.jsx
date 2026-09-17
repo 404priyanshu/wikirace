@@ -10,7 +10,7 @@ function formatDelta(milliseconds) {
   return `+${((milliseconds || 0) / 1000).toFixed(2)}`;
 }
 
-export function HopRail({ steps, target, phase, result }) {
+export function HopRail({ steps, target, phase, result, optimal }) {
   const railRef = useRef(null);
   const currentArticle = steps.at(-1)?.article || "";
   const targetReached = currentArticle.toLocaleLowerCase() === target.toLocaleLowerCase();
@@ -62,6 +62,21 @@ export function HopRail({ steps, target, phase, result }) {
           </li>
         );
       })}
+
+      {optimal && (
+        <li className="hop is-optimal-route">
+          <span className="hop-index">◆</span>
+          <span className="hop-marker">
+            <i className="hop-dot" />
+          </span>
+          <span className="hop-copy">
+            <span className="hop-title">{optimal.path.join(" → ")}</span>
+            <span className="hop-meta">
+              <span className="hop-tag">BEST {optimal.depth}</span>
+            </span>
+          </span>
+        </li>
+      )}
 
       {!targetReached && steps.length > 0 && (
         <li className={`hop is-destination ${running ? "is-pending" : ""}`}>

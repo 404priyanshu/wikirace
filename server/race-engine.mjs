@@ -1,4 +1,5 @@
 import { chooseWithGpt, chooseWithJev } from "./models.mjs";
+import { optimalRoute } from "./optimal.mjs";
 import { getArticle, resolveArticle } from "./wikipedia.mjs";
 
 // Jev accepts at most 255 choices per question, so that is the shared ceiling.
@@ -151,6 +152,12 @@ export async function runRace({ start, target, maxHops, emit, signal }) {
     maxHops,
     startedAt: Date.now(),
   });
+
+  // Known-pair only: a live shortest-path search would cost minutes.
+  const optimal = optimalRoute(canonicalStart, canonicalTarget);
+  if (optimal) {
+    emit({ type: "race_optimal", depth: optimal.depth, path: optimal.path });
+  }
 
   const settled = await Promise.allSettled(
     Object.keys(agents).map(async (agentId) => {

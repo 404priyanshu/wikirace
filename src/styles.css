@@ -305,7 +305,20 @@ button { color: inherit; }
   font: 600 8px/1 "JetBrains Mono Variable", monospace;
   letter-spacing: .13em;
 }
-.telemetry strong { display: block; margin-top: 7px; font: 600 19px/1 "JetBrains Mono Variable", monospace; }
+.telemetry strong {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 7px;
+  font: 600 19px/1 "JetBrains Mono Variable", monospace;
+}
+.telemetry strong em {
+  color: #6b747f;
+  font: 600 7px/1 "JetBrains Mono Variable", monospace;
+  font-style: normal;
+  letter-spacing: .1em;
+}
+.telemetry strong em.is-optimal { color: var(--accent); }
 .route-heading {
   display: flex;
   align-items: center;
@@ -498,6 +511,31 @@ a.hop-title:hover { color: var(--accent); text-decoration: underline; text-under
 .hop.is-destination.is-pending .hop-dot { animation: destination-pulse 1.6s ease-in-out infinite; }
 
 .hop:last-child:not(.is-destination) { animation: hop-arrive .32s ease-out both; }
+
+/* The precomputed shortest route, shown for comparison rather than as a step. */
+.hop.is-optimal-route {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px dashed #262e37;
+  opacity: .72;
+}
+.hop.is-optimal-route .hop-index { color: #47505b; }
+.hop.is-optimal-route .hop-marker::before,
+.hop.is-optimal-route .hop-marker::after { display: none; }
+.hop.is-optimal-route .hop-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 0;
+  border-color: #5c6672;
+  background: transparent;
+  transform: rotate(45deg);
+}
+.hop.is-optimal-route .hop-title {
+  color: #7f8892;
+  font-size: 10px;
+  font-weight: 520;
+}
+.hop.is-optimal-route .hop-tag { border-color: #333b45; color: #6b747f; }
 
 .empty-route {
   height: 170px;

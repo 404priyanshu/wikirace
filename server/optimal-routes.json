@@ -1,0 +1,136 @@
+{
+  "maxLinks": 255,
+  "computedAt": "2026-09-17T20:19:01.965Z",
+  "routes": {
+    "coffee|artificial intelligence": {
+      "source": "Coffee",
+      "target": "Artificial intelligence",
+      "depth": 3,
+      "path": [
+        "Coffee",
+        "Stimulant",
+        "Cognition",
+        "Artificial intelligence"
+      ]
+    },
+    "sourdough|riemann hypothesis": {
+      "source": "Sourdough",
+      "target": "Riemann hypothesis",
+      "depth": 3,
+      "path": [
+        "Sourdough",
+        "Ratio",
+        "Number",
+        "Riemann hypothesis"
+      ]
+    },
+    "bicycle|photosynthesis": {
+      "source": "Bicycle",
+      "target": "Photosynthesis",
+      "depth": 2,
+      "path": [
+        "Bicycle",
+        "Sustainable energy",
+        "Photosynthesis"
+      ]
+    },
+    "jazz|plate tectonics": {
+      "source": "Jazz",
+      "target": "Plate tectonics",
+      "depth": 3,
+      "path": [
+        "Jazz",
+        "Folk music",
+        "Appalachian Mountains",
+        "Plate tectonics"
+      ]
+    },
+    "iceland|cryptography": {
+      "source": "Iceland",
+      "target": "Cryptography",
+      "depth": 3,
+      "path": [
+        "Iceland",
+        "Icelandic language",
+        "E",
+        "Cryptography"
+      ]
+    },
+    "origami|immune system": {
+      "source": "Origami",
+      "target": "Immune system",
+      "depth": 3,
+      "path": [
+        "Origami",
+        "Stent",
+        "Medicine",
+        "Immune system"
+      ]
+    },
+    "chess|antibiotic": {
+      "source": "Chess",
+      "target": "Antibiotic",
+      "depth": 3,
+      "path": [
+        "Chess",
+        "Wilhelm Steinitz",
+        "Syphilis",
+        "Antibiotic"
+      ]
+    },
+    "lighthouse|genetics": {
+      "source": "Lighthouse",
+      "target": "Genetics",
+      "depth": 3,
+      "path": [
+        "Lighthouse",
+        "Ocean County",
+        "Irish people",
+        "Genetics"
+      ]
+    },
+    "pottery|black hole": {
+      "source": "Pottery",
+      "target": "Black hole",
+      "depth": 3,
+      "path": [
+        "Pottery",
+        "ASTM International",
+        "Convection",
+        "Black hole"
+      ]
+    },
+    "tea|machine learning": {
+      "source": "Tea",
+      "target": "Machine learning",
+      "depth": 3,
+      "path": [
+        "Tea",
+        "Longjing tea",
+        "YouTube",
+        "Machine learning"
+      ]
+    },
+    "volcano|linguistics": {
+      "source": "Volcano",
+      "target": "Linguistics",
+      "depth": 2,
+      "path": [
+        "Volcano",
+        "American English",
+        "Linguistics"
+      ]
+    },
+    "violin|vaccine": {
+      "source": "Violin",
+      "target": "Vaccine",
+      "depth": 3,
+      "path": [
+        "Violin",
+        "Violin (disambiguation)",
+        "VIOLIN vaccine database",
+        "Vaccine"
+      ]
+    }
+  }
+}
