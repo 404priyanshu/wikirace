@@ -25,6 +25,9 @@ export const config = {
   maxRacesPerIpPerHour: Number(process.env.MAX_RACES_PER_IP_PER_HOUR || 3),
   maxRacesPerDay: Number(process.env.MAX_RACES_PER_DAY || 100),
   maxConcurrentRaces: Number(process.env.MAX_CONCURRENT_RACES || 2),
+  // Optional Upstash Redis REST creds. Unset => limits live in memory (local dev).
+  upstashUrl: (process.env.UPSTASH_REDIS_REST_URL || "").replace(/\/$/, ""),
+  upstashToken: process.env.UPSTASH_REDIS_REST_TOKEN || "",
 };
 
 export function publicKeyStatus() {

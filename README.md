@@ -34,6 +34,9 @@ Public-demo guardrails (races run on the host's API keys):
 - `MAX_RACES_PER_IP_PER_HOUR` — defaults to `3`.
 - `MAX_RACES_PER_DAY` — defaults to `100`.
 - `MAX_CONCURRENT_RACES` — defaults to `2`.
+- `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` — optional. Set both to keep
+  per-IP and daily counts across restarts. Unset, the limits live in memory and
+  reset with the process, which is fine locally but not on a host that sleeps.
 
 Secrets remain on the server and are never sent to the browser.
 

@@ -13,8 +13,8 @@ const app = express();
 app.set("trust proxy", true);
 app.use(express.json({ limit: "64kb" }));
 
-app.get("/api/health", (request, response) => {
-  response.json({ ok: true, keys: publicKeyStatus(), budget: budgetStatus(clientIp(request)) });
+app.get("/api/health", async (request, response) => {
+  response.json({ ok: true, keys: publicKeyStatus(), budget: await budgetStatus(clientIp(request)) });
 });
 
 app.get("/api/articles/search", async (request, response) => {
@@ -40,7 +40,7 @@ app.post("/api/race", async (request, response) => {
     return response.status(400).json({ error: "Start and target articles are required" });
   }
 
-  const slot = claimRaceSlot(clientIp(request));
+  const slot = await claimRaceSlot(clientIp(request));
   if (!slot.ok) return response.status(slot.status).json({ error: slot.error });
 
   response.status(200);
