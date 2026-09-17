@@ -19,6 +19,10 @@ export const config = {
     process.env.TYPESAFE_API_KEY ||
     process.env.typesafe_api_key ||
     readTypesafeFallback(),
+  // Public-demo guardrails: races run on the host's API keys, so cap the spend.
+  maxRacesPerIpPerHour: Number(process.env.MAX_RACES_PER_IP_PER_HOUR || 3),
+  maxRacesPerDay: Number(process.env.MAX_RACES_PER_DAY || 100),
+  maxConcurrentRaces: Number(process.env.MAX_CONCURRENT_RACES || 2),
 };
 
 export function publicKeyStatus() {

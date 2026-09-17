@@ -29,7 +29,19 @@ Open <http://127.0.0.1:4173>.
 - `TYPESAFE_API_KEY` — required for Jev. The server also checks the existing jev-browser config at `~/.config/jev-browser/.env`.
 - `PORT` — defaults to `4173`.
 
+Public-demo guardrails (races run on the host's API keys):
+
+- `MAX_RACES_PER_IP_PER_HOUR` — defaults to `3`.
+- `MAX_RACES_PER_DAY` — defaults to `100`.
+- `MAX_CONCURRENT_RACES` — defaults to `2`.
+
 Secrets remain on the server and are never sent to the browser.
+
+## Tests
+
+```bash
+npm test
+```
 
 ## Race format
 

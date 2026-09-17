@@ -3,16 +3,18 @@ import { fileURLToPath } from "node:url";
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import { config, publicKeyStatus } from "./config.mjs";
+import { budgetStatus, claimRaceSlot, clientIp } from "./rate-limit.mjs";
 import { runRace } from "./race-engine.mjs";
 import { resolveArticle, searchArticles } from "./wikipedia.mjs";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(dirname, "..");
 const app = express();
+app.set("trust proxy", true);
 app.use(express.json({ limit: "64kb" }));
 
-app.get("/api/health", (_request, response) => {
-  response.json({ ok: true, keys: publicKeyStatus() });
+app.get("/api/health", (request, response) => {
+  response.json({ ok: true, keys: publicKeyStatus(), budget: budgetStatus(clientIp(request)) });
 });
 
 app.get("/api/articles/search", async (request, response) => {
@@ -37,6 +39,9 @@ app.post("/api/race", async (request, response) => {
   if (!start?.trim() || !target?.trim()) {
     return response.status(400).json({ error: "Start and target articles are required" });
   }
+
+  const slot = claimRaceSlot(clientIp(request));
+  if (!slot.ok) return response.status(slot.status).json({ error: slot.error });
 
   response.status(200);
   response.setHeader("Content-Type", "application/x-ndjson");
@@ -66,6 +71,7 @@ app.post("/api/race", async (request, response) => {
   } catch (error) {
     emit({ type: "race_error", message: error.message });
   } finally {
+    slot.release();
     if (!closed) response.end();
   }
 });
