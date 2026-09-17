@@ -90,6 +90,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(vite.middlewares);
 }
 
-app.listen(config.port, "127.0.0.1", () => {
-  console.log(`WikiRace ready at http://127.0.0.1:${config.port}`);
+app.listen(config.port, config.host, () => {
+  console.log(`WikiRace ready on ${config.host}:${config.port}`);
 });

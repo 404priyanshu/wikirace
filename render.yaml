@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: wikirace
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Set these in the Render dashboard; never commit them.
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: TYPESAFE_API_KEY
+        sync: false
+      - key: MAX_RACES_PER_IP_PER_HOUR
+        value: "3"
+      - key: MAX_RACES_PER_DAY
+        value: "100"
+      - key: MAX_CONCURRENT_RACES
+        value: "2"

@@ -14,6 +14,8 @@ function readTypesafeFallback() {
 
 export const config = {
   port: Number(process.env.PORT || 4173),
+  // Hosted platforms route to the container, so only bind loopback in local dev.
+  host: process.env.HOST || (process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1"),
   openaiApiKey: process.env.OPENAI_API_KEY || "",
   typesafeApiKey:
     process.env.TYPESAFE_API_KEY ||
