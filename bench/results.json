@@ -1,0 +1,472 @@
+{
+  "summary": {
+    "ranAt": "2026-09-17T18:00:14.627Z",
+    "maxHops": 12,
+    "pairs": 12,
+    "bothFinished": 12,
+    "jevFasterWhenBothFinished": 10,
+    "gptFasterWhenBothFinished": 2,
+    "gpt": {
+      "attempted": 12,
+      "errored": 0,
+      "finished": 12,
+      "finishRate": 1,
+      "medianSeconds": 17.27358752149999,
+      "medianHops": 3,
+      "medianMsPerCall": 2951.4210699935884
+    },
+    "jev": {
+      "attempted": 12,
+      "errored": 0,
+      "finished": 12,
+      "finishRate": 1,
+      "medianSeconds": 12.492035791999992,
+      "medianHops": 5,
+      "medianMsPerCall": 1132.2816430262683
+    }
+  },
+  "rows": [
+    {
+      "start": "Coffee",
+      "target": "Artificial intelligence",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 17435.033709,
+          "modelMs": 38893.065083,
+          "calls": 13,
+          "hops": 4,
+          "path": [
+            "Coffee",
+            "Google Books",
+            "AI Mode",
+            "Generative AI",
+            "Artificial intelligence"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 12372.508834,
+          "modelMs": 26661.206578999998,
+          "calls": 23,
+          "hops": 5,
+          "path": [
+            "Coffee",
+            "Java",
+            "Java (programming language)",
+            "Apache Mahout",
+            "Machine Learning",
+            "Artificial intelligence"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Sourdough",
+      "target": "Riemann hypothesis",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 9581.113792000004,
+          "modelMs": 14823.279252,
+          "calls": 8,
+          "hops": 3,
+          "path": [
+            "Sourdough",
+            "Ratio",
+            "Mathematics",
+            "Riemann hypothesis"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 42198.47895799999,
+          "modelMs": 26110.558002000012,
+          "calls": 23,
+          "hops": 5,
+          "path": [
+            "Sourdough",
+            "Internet",
+            "Computer scientists",
+            "Glossary of areas of mathematics",
+            "Analytic number theory",
+            "Riemann Hypothesis"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Bicycle",
+      "target": "Photosynthesis",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 9663.273457999996,
+          "modelMs": 20329.52966699998,
+          "calls": 10,
+          "hops": 3,
+          "path": [
+            "Bicycle",
+            "Biomass",
+            "Plant",
+            "Photosynthesis"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 4693.0461249999935,
+          "modelMs": 9269.255625000005,
+          "calls": 10,
+          "hops": 3,
+          "path": [
+            "Bicycle",
+            "Biomass",
+            "Plant",
+            "Photosynthesis"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Jazz",
+      "target": "Plate tectonics",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 16956.570000000007,
+          "modelMs": 38896.62983199996,
+          "calls": 12,
+          "hops": 3,
+          "path": [
+            "Jazz",
+            "Congo River",
+            "East African Rift",
+            "Plate tectonics"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 16956.523125000007,
+          "modelMs": 14884.071169000003,
+          "calls": 12,
+          "hops": 3,
+          "path": [
+            "Jazz",
+            "Congo River",
+            "East African Rift",
+            "Plate tectonics"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Iceland",
+      "target": "Cryptography",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 13815.654249999992,
+          "modelMs": 30946.01641500005,
+          "calls": 12,
+          "hops": 3,
+          "path": [
+            "Iceland",
+            "Central Intelligence Agency",
+            "Cryptanalysis",
+            "Cryptography"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 4530.336165999994,
+          "modelMs": 8912.392583000008,
+          "calls": 10,
+          "hops": 3,
+          "path": [
+            "Iceland",
+            "Science and technology in Iceland",
+            "Technology",
+            "Cryptography"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Origami",
+      "target": "Immune system",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 32531.351333,
+          "modelMs": 76210.98462399995,
+          "calls": 21,
+          "hops": 5,
+          "path": [
+            "Origami",
+            "Ernest Hanbury Hankin",
+            "Immune response",
+            "Innate immune system",
+            "Adaptive immune system",
+            "Immune system"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 11606.58133299998,
+          "modelMs": 24958.938751000038,
+          "calls": 21,
+          "hops": 5,
+          "path": [
+            "Origami",
+            "Ernest Hanbury Hankin",
+            "Immune response",
+            "Innate immune system",
+            "Immunity (medical)",
+            "Immune system"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Chess",
+      "target": "Antibiotic",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 25095.666499999992,
+          "modelMs": 61305.88699899998,
+          "calls": 18,
+          "hops": 4,
+          "path": [
+            "Chess",
+            "COVID-19 pandemic",
+            "Treatment and management of COVID-19",
+            "Anti-viral drug",
+            "Antibiotic"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 17336.498416000017,
+          "modelMs": 27103.71921099999,
+          "calls": 24,
+          "hops": 5,
+          "path": [
+            "Chess",
+            "COVID-19 pandemic",
+            "Treatment and management of COVID-19",
+            "COVID-19",
+            "Antimicrobial resistance",
+            "Antibiotic"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Lighthouse",
+      "target": "Genetics",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 29200.117833000026,
+          "modelMs": 33595.117373999965,
+          "calls": 12,
+          "hops": 3,
+          "path": [
+            "Lighthouse",
+            "Oak tree",
+            "Genome",
+            "Genetics"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 31713.526583999977,
+          "modelMs": 29474.00350000005,
+          "calls": 24,
+          "hops": 5,
+          "path": [
+            "Lighthouse",
+            "Radioisotope thermoelectric generator",
+            "Bone marrow",
+            "Stem cell",
+            "DNA",
+            "Genetics"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Pottery",
+      "target": "Black hole",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 12443.452624999976,
+          "modelMs": 34932.81483399996,
+          "calls": 12,
+          "hops": 3,
+          "path": [
+            "Pottery",
+            "Hydrogen",
+            "Gravity",
+            "Black hole"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 6020.337541999994,
+          "modelMs": 13126.395336000132,
+          "calls": 12,
+          "hops": 3,
+          "path": [
+            "Pottery",
+            "Hydrogen",
+            "Gravity",
+            "Black hole"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Tea",
+      "target": "Machine learning",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 23961.638416,
+          "modelMs": 49200.83725099987,
+          "calls": 16,
+          "hops": 5,
+          "path": [
+            "Tea",
+            "Bibcode (identifier)",
+            "Astrophysics Data System",
+            "Python (programming language)",
+            "Computational learning theory",
+            "Machine learning"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 12611.562749999983,
+          "modelMs": 25393.285704999755,
+          "calls": 24,
+          "hops": 5,
+          "path": [
+            "Tea",
+            "Enzyme",
+            "Biochemistry",
+            "Engineering",
+            "Artificial intelligence",
+            "Machine learning"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Volcano",
+      "target": "Linguistics",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 17112.141333999985,
+          "modelMs": 38489.21370799991,
+          "calls": 12,
+          "hops": 3,
+          "path": [
+            "Volcano",
+            "Hawaiian language",
+            "Copula (linguistics)",
+            "Linguistics"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 5689.00779199996,
+          "modelMs": 12717.398916999868,
+          "calls": 12,
+          "hops": 3,
+          "path": [
+            "Volcano",
+            "Latin",
+            "Grammar",
+            "Linguistics"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Violin",
+      "target": "Vaccine",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 38925.78375,
+          "modelMs": 61706.536542000016,
+          "calls": 22,
+          "hops": 5,
+          "path": [
+            "Violin",
+            "Catgut",
+            "Surgery",
+            "Immunology",
+            "Adaptive immune system",
+            "Vaccine"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 32702.851000000024,
+          "modelMs": 25457.53229399986,
+          "calls": 22,
+          "hops": 5,
+          "path": [
+            "Violin",
+            "Catgut",
+            "Surgery",
+            "Immunology",
+            "Immune system",
+            "Vaccine"
+          ],
+          "error": ""
+        }
+      }
+    }
+  ]
+}
