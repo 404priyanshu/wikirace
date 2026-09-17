@@ -55,7 +55,7 @@ function sleep(ms, signal) {
   });
 }
 
-async function wikiFetch(params, { signal } = {}) {
+export async function wikiFetch(params, { signal } = {}) {
   for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt += 1) {
     const timeout = AbortSignal.timeout(REQUEST_TIMEOUT_MS);
     const response = await fetch(apiUrl(params), {

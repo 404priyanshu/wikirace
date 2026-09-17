@@ -46,6 +46,21 @@ Secrets remain on the server and are never sent to the browser.
 npm test
 ```
 
+## Scoring optimality
+
+`bench/shortest.mjs` finds the shortest path **in the graph the racers see** —
+live rendered HTML, main namespace, first 255 links per page:
+
+```bash
+node --env-file=.env bench/shortest.mjs "Coffee" "Artificial intelligence"
+node --env-file=.env bench/shortest.mjs --score bench/results-gpt-none.json
+```
+
+This is not Six Degrees of Wikipedia. That tool runs BFS over a full SQL dump
+counting every link including navboxes, at a past snapshot. The two graphs
+differ enough to matter: on `Coffee -> Bennett` the dump's 5-hop optimum uses
+five edges, and not one of them exists in the rendered pages the racers read.
+
 ## Race format
 
 Wikipedia article links are read from the rendered article HTML in the order the page displays them, filtered to main-namespace articles, and capped at 255 candidates per hop (Jev's per-question ceiling, applied equally to both racers). Each model makes exactly one judgment per hop over the identical candidate list. Batching the candidates would multiply a per-call latency difference into a wall-clock difference created by the harness rather than the models. A direct link to the target is followed without a model call.
