@@ -1,0 +1,515 @@
+{
+  "summary": {
+    "ranAt": "2026-09-17T19:25:19.924Z",
+    "label": "gpt-low",
+    "gptReasoningEffort": "low",
+    "maxLinks": 255,
+    "clock": "decision time only; page fetches excluded",
+    "maxHops": 12,
+    "pairs": 12,
+    "bothFinished": 12,
+    "jevFasterWhenBothFinished": 12,
+    "gptFasterWhenBothFinished": 0,
+    "gpt": {
+      "attempted": 12,
+      "errored": 0,
+      "finished": 12,
+      "finishRate": 1,
+      "medianSeconds": 9.350343583499983,
+      "medianHops": 3,
+      "retries": 0,
+      "medianMsPerCall": 4562.457750000001
+    },
+    "jev": {
+      "attempted": 12,
+      "errored": 0,
+      "finished": 12,
+      "finishRate": 1,
+      "medianSeconds": 2.0095328965000516,
+      "medianHops": 3,
+      "retries": 0,
+      "medianMsPerCall": 849.9524374999855
+    }
+  },
+  "rows": [
+    {
+      "start": "Coffee",
+      "target": "Artificial intelligence",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 12673.614167000003,
+          "modelMs": 12673.614167000003,
+          "fetchMs": 3684.5191240000017,
+          "retries": 0,
+          "calls": 3,
+          "hops": 4,
+          "path": [
+            "Coffee",
+            "United Nations",
+            "International Telecommunication Union",
+            "ITU-WHO Focus Group on Artificial Intelligence for Health",
+            "Artificial intelligence"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 3055.8763330000006,
+          "modelMs": 3055.8763330000006,
+          "fetchMs": 4842.121416999999,
+          "retries": 0,
+          "calls": 4,
+          "hops": 5,
+          "path": [
+            "Coffee",
+            "Java",
+            "Java (programming language)",
+            "Apache Mahout",
+            "Machine Learning",
+            "Artificial intelligence"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Sourdough",
+      "target": "Riemann hypothesis",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 8530.299207999997,
+          "modelMs": 8530.299207999997,
+          "fetchMs": 1058.0912499999977,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Sourdough",
+            "Ratio",
+            "Mathematics",
+            "Riemann hypothesis"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 1636.1703340000095,
+          "modelMs": 1636.1703340000095,
+          "fetchMs": 3096.1226659999957,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Sourdough",
+            "Louis Pasteur",
+            "Mathematics",
+            "Riemann hypothesis"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Bicycle",
+      "target": "Photosynthesis",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 8598.379499999995,
+          "modelMs": 8598.379499999995,
+          "fetchMs": 13589.214625000008,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Bicycle",
+            "Biomass",
+            "Plant",
+            "Photosynthesis"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 1302.4842910000007,
+          "modelMs": 1302.4842910000007,
+          "fetchMs": 1392.8321670000005,
+          "retries": 0,
+          "calls": 1,
+          "hops": 2,
+          "path": [
+            "Bicycle",
+            "Energy",
+            "Photosynthesis"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Jazz",
+      "target": "Plate tectonics",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 9952.595457999996,
+          "modelMs": 9952.595457999996,
+          "fetchMs": 14671.553000000044,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Jazz",
+            "West Africa",
+            "Atlantic Ocean",
+            "Plate tectonics"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 3042.891123999958,
+          "modelMs": 3042.891123999958,
+          "fetchMs": 4964.545207999996,
+          "retries": 0,
+          "calls": 4,
+          "hops": 5,
+          "path": [
+            "Jazz",
+            "Music genre",
+            "Music",
+            "Science",
+            "History of geology",
+            "Plate tectonics"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Iceland",
+      "target": "Cryptography",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 7660.380917000031,
+          "modelMs": 7660.380917000031,
+          "fetchMs": 2972.04795800001,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Iceland",
+            "Cold War",
+            "Signals intelligence",
+            "Cryptography"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 2739.5529169999936,
+          "modelMs": 2739.5529169999936,
+          "fetchMs": 3645.8028330000234,
+          "retries": 0,
+          "calls": 3,
+          "hops": 4,
+          "path": [
+            "Iceland",
+            "Panama Papers",
+            "Data breach",
+            "Encryption",
+            "Cryptography"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Origami",
+      "target": "Immune system",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 9413.409374999988,
+          "modelMs": 9413.409374999988,
+          "fetchMs": 0.04662499998812564,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Origami",
+            "Stent",
+            "Medicine",
+            "Immune system"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 1557.6719169999997,
+          "modelMs": 1557.6719169999997,
+          "fetchMs": 2405.9262909999816,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Origami",
+            "Stent",
+            "Medicine",
+            "Immune system"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Chess",
+      "target": "Antibiotic",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 17286.01791600004,
+          "modelMs": 17286.01791600004,
+          "fetchMs": 5981.364916999999,
+          "retries": 0,
+          "calls": 3,
+          "hops": 4,
+          "path": [
+            "Chess",
+            "COVID-19 pandemic",
+            "COVID-19",
+            "Pneumonia",
+            "Antibiotic"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 2064.096750000026,
+          "modelMs": 2064.096750000026,
+          "fetchMs": 2650.0390829999815,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Chess",
+            "Quarantine",
+            "Infection",
+            "Antibiotic"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Lighthouse",
+      "target": "Genetics",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 9198.046666999988,
+          "modelMs": 9198.046666999988,
+          "fetchMs": 2578.1105850000167,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Lighthouse",
+            "Oak tree",
+            "Genome",
+            "Genetics"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 1763.6394159999327,
+          "modelMs": 1763.6394159999327,
+          "fetchMs": 1302.3831670000218,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Lighthouse",
+            "Civil engineer",
+            "Science",
+            "Genetics"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Pottery",
+      "target": "Black hole",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 9051.784333000018,
+          "modelMs": 9051.784333000018,
+          "fetchMs": 2858.3451659999555,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Pottery",
+            "Hydrogen",
+            "Star",
+            "Black hole"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 2042.5236260000383,
+          "modelMs": 2042.5236260000383,
+          "fetchMs": 2803.740208000003,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Pottery",
+            "Technology",
+            "Physics",
+            "Black hole"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Tea",
+      "target": "Machine learning",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 13194.056500000006,
+          "modelMs": 13194.056500000006,
+          "fetchMs": 2491.352124999976,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Tea",
+            "Evidence-based medicine",
+            "Clinical decision support system",
+            "Machine learning"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 1976.542167000065,
+          "modelMs": 1976.542167000065,
+          "fetchMs": 2142.020998999942,
+          "retries": 0,
+          "calls": 3,
+          "hops": 4,
+          "path": [
+            "Tea",
+            "Tea (disambiguation)",
+            "Tea (programming language)",
+            "Programming paradigm",
+            "Machine learning"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Volcano",
+      "target": "Linguistics",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 9287.277791999979,
+          "modelMs": 9287.277791999979,
+          "fetchMs": 1366.3444589999272,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Volcano",
+            "Latin",
+            "Philology",
+            "Linguistics"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 1486.5487500000163,
+          "modelMs": 1486.5487500000163,
+          "fetchMs": 2327.743709000002,
+          "retries": 0,
+          "calls": 2,
+          "hops": 3,
+          "path": [
+            "Volcano",
+            "Latin",
+            "Grammar",
+            "Linguistics"
+          ],
+          "error": ""
+        }
+      }
+    },
+    {
+      "start": "Violin",
+      "target": "Vaccine",
+      "raceError": "",
+      "agents": {
+        "gpt": {
+          "result": "finished",
+          "elapsedMs": 21182.07699900004,
+          "modelMs": 21182.07699900004,
+          "fetchMs": 5960.395998999826,
+          "retries": 0,
+          "calls": 5,
+          "hops": 6,
+          "path": [
+            "Violin",
+            "Oxford",
+            "University of Oxford",
+            "Oxford University Medical School",
+            "Jenner Institute",
+            "Immunization",
+            "Vaccine"
+          ],
+          "error": ""
+        },
+        "jev": {
+          "result": "finished",
+          "elapsedMs": 3115.2848759999033,
+          "modelMs": 3115.2848759999033,
+          "fetchMs": 8751.380041999975,
+          "retries": 0,
+          "calls": 3,
+          "hops": 4,
+          "path": [
+            "Violin",
+            "Musical instrument",
+            "Leprosy",
+            "BCG vaccine",
+            "Vaccine"
+          ],
+          "error": ""
+        }
+      }
+    }
+  ]
+}
