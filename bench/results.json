@@ -1,28 +1,28 @@
 {
   "summary": {
-    "ranAt": "2026-09-17T18:00:14.627Z",
+    "ranAt": "2026-09-17T18:23:13.206Z",
     "maxHops": 12,
     "pairs": 12,
-    "bothFinished": 12,
-    "jevFasterWhenBothFinished": 10,
-    "gptFasterWhenBothFinished": 2,
+    "bothFinished": 7,
+    "jevFasterWhenBothFinished": 4,
+    "gptFasterWhenBothFinished": 3,
     "gpt": {
       "attempted": 12,
-      "errored": 0,
-      "finished": 12,
+      "errored": 1,
+      "finished": 8,
       "finishRate": 1,
-      "medianSeconds": 17.27358752149999,
-      "medianHops": 3,
-      "medianMsPerCall": 2951.4210699935884
+      "medianSeconds": 7.552600270500002,
+      "medianHops": 3.5,
+      "medianMsPerCall": 1839.459229250002
     },
     "jev": {
       "attempted": 12,
-      "errored": 0,
-      "finished": 12,
+      "errored": 1,
+      "finished": 8,
       "finishRate": 1,
-      "medianSeconds": 12.492035791999992,
-      "medianHops": 5,
-      "medianMsPerCall": 1132.2816430262683
+      "medianSeconds": 6.153387333000006,
+      "medianHops": 4,
+      "medianMsPerCall": 857.6468543333274
     }
   },
   "rows": [
@@ -33,34 +33,27 @@
       "agents": {
         "gpt": {
           "result": "finished",
-          "elapsedMs": 17435.033709,
-          "modelMs": 38893.065083,
-          "calls": 13,
+          "elapsedMs": 8681.698125,
+          "modelMs": 4636.384084000001,
+          "calls": 3,
           "hops": 4,
           "path": [
             "Coffee",
-            "Google Books",
-            "AI Mode",
-            "Generative AI",
+            "Spectroscopy",
+            "Maker culture",
+            "Robotics",
             "Artificial intelligence"
           ],
           "error": ""
         },
         "jev": {
-          "result": "finished",
-          "elapsedMs": 12372.508834,
-          "modelMs": 26661.206578999998,
-          "calls": 23,
-          "hops": 5,
-          "path": [
-            "Coffee",
-            "Java",
-            "Java (programming language)",
-            "Apache Mahout",
-            "Machine Learning",
-            "Artificial intelligence"
-          ],
-          "error": ""
+          "result": null,
+          "elapsedMs": 0,
+          "modelMs": 3451.785583,
+          "calls": 4,
+          "hops": 0,
+          "path": [],
+          "error": "Wikipedia is rate limiting this client. Try again in about 36s."
         }
       }
     },
@@ -71,9 +64,9 @@
       "agents": {
         "gpt": {
           "result": "finished",
-          "elapsedMs": 9581.113792000004,
-          "modelMs": 14823.279252,
-          "calls": 8,
+          "elapsedMs": 5229.770457999999,
+          "modelMs": 4057.4256659999955,
+          "calls": 2,
           "hops": 3,
           "path": [
             "Sourdough",
@@ -85,17 +78,15 @@
         },
         "jev": {
           "result": "finished",
-          "elapsedMs": 42198.47895799999,
-          "modelMs": 26110.558002000012,
-          "calls": 23,
-          "hops": 5,
+          "elapsedMs": 4994.924834000005,
+          "modelMs": 1770.9687919999924,
+          "calls": 2,
+          "hops": 3,
           "path": [
             "Sourdough",
-            "Internet",
-            "Computer scientists",
-            "Glossary of areas of mathematics",
-            "Analytic number theory",
-            "Riemann Hypothesis"
+            "Louis Pasteur",
+            "Mathematics",
+            "Riemann hypothesis"
           ],
           "error": ""
         }
@@ -107,29 +98,23 @@
       "raceError": "",
       "agents": {
         "gpt": {
-          "result": "finished",
-          "elapsedMs": 9663.273457999996,
-          "modelMs": 20329.52966699998,
-          "calls": 10,
-          "hops": 3,
-          "path": [
-            "Bicycle",
-            "Biomass",
-            "Plant",
-            "Photosynthesis"
-          ],
-          "error": ""
+          "result": null,
+          "elapsedMs": 0,
+          "modelMs": 2259.5107500000013,
+          "calls": 1,
+          "hops": 0,
+          "path": [],
+          "error": "Wikipedia is rate limiting this client. Try again in about 33s."
         },
         "jev": {
           "result": "finished",
-          "elapsedMs": 4693.0461249999935,
-          "modelMs": 9269.255625000005,
-          "calls": 10,
-          "hops": 3,
+          "elapsedMs": 3192.3233749999927,
+          "modelMs": 1443.7925830000022,
+          "calls": 1,
+          "hops": 2,
           "path": [
             "Bicycle",
-            "Biomass",
-            "Plant",
+            "Energy",
             "Photosynthesis"
           ],
           "error": ""
@@ -143,9 +128,9 @@
       "agents": {
         "gpt": {
           "result": "finished",
-          "elapsedMs": 16956.570000000007,
-          "modelMs": 38896.62983199996,
-          "calls": 12,
+          "elapsedMs": 6048.325083000003,
+          "modelMs": 3761.034209000005,
+          "calls": 2,
           "hops": 3,
           "path": [
             "Jazz",
@@ -157,14 +142,16 @@
         },
         "jev": {
           "result": "finished",
-          "elapsedMs": 16956.523125000007,
-          "modelMs": 14884.071169000003,
-          "calls": 12,
-          "hops": 3,
+          "elapsedMs": 8103.3739579999965,
+          "modelMs": 2834.1953319999884,
+          "calls": 4,
+          "hops": 5,
           "path": [
             "Jazz",
-            "Congo River",
-            "East African Rift",
+            "Music genre",
+            "Music",
+            "Science",
+            "History of geology",
             "Plate tectonics"
           ],
           "error": ""
@@ -178,28 +165,30 @@
       "agents": {
         "gpt": {
           "result": "finished",
-          "elapsedMs": 13815.654249999992,
-          "modelMs": 30946.01641500005,
-          "calls": 12,
-          "hops": 3,
+          "elapsedMs": 11030.684958999977,
+          "modelMs": 7642.438000000024,
+          "calls": 3,
+          "hops": 4,
           "path": [
             "Iceland",
-            "Central Intelligence Agency",
-            "Cryptanalysis",
+            "Carbon dating",
+            "Multiplicative inverse",
+            "Cryptologia",
             "Cryptography"
           ],
           "error": ""
         },
         "jev": {
           "result": "finished",
-          "elapsedMs": 4530.336165999994,
-          "modelMs": 8912.392583000008,
-          "calls": 10,
-          "hops": 3,
+          "elapsedMs": 5557.557582999987,
+          "modelMs": 2263.547292000003,
+          "calls": 3,
+          "hops": 4,
           "path": [
             "Iceland",
-            "Science and technology in Iceland",
-            "Technology",
+            "Panama Papers",
+            "Data breach",
+            "Encryption",
             "Cryptography"
           ],
           "error": ""
@@ -213,32 +202,29 @@
       "agents": {
         "gpt": {
           "result": "finished",
-          "elapsedMs": 32531.351333,
-          "modelMs": 76210.98462399995,
-          "calls": 21,
-          "hops": 5,
+          "elapsedMs": 9969.124041000003,
+          "modelMs": 6713.847959000006,
+          "calls": 3,
+          "hops": 4,
           "path": [
             "Origami",
-            "Ernest Hanbury Hankin",
-            "Immune response",
-            "Innate immune system",
-            "Adaptive immune system",
+            "PMID (identifier)",
+            "Biomedicine",
+            "Immunology",
             "Immune system"
           ],
           "error": ""
         },
         "jev": {
           "result": "finished",
-          "elapsedMs": 11606.58133299998,
-          "modelMs": 24958.938751000038,
-          "calls": 21,
-          "hops": 5,
+          "elapsedMs": 4474.277875,
+          "modelMs": 1753.1321659999958,
+          "calls": 2,
+          "hops": 3,
           "path": [
             "Origami",
-            "Ernest Hanbury Hankin",
-            "Immune response",
-            "Innate immune system",
-            "Immunity (medical)",
+            "Stent",
+            "Medicine",
             "Immune system"
           ],
           "error": ""
@@ -248,37 +234,24 @@
     {
       "start": "Chess",
       "target": "Antibiotic",
-      "raceError": "",
+      "raceError": "Wikipedia is rate limiting this client. Try again in about 32s.",
       "agents": {
         "gpt": {
-          "result": "finished",
-          "elapsedMs": 25095.666499999992,
-          "modelMs": 61305.88699899998,
-          "calls": 18,
-          "hops": 4,
-          "path": [
-            "Chess",
-            "COVID-19 pandemic",
-            "Treatment and management of COVID-19",
-            "Anti-viral drug",
-            "Antibiotic"
-          ],
+          "result": null,
+          "elapsedMs": 0,
+          "modelMs": 0,
+          "calls": 0,
+          "hops": 0,
+          "path": [],
           "error": ""
         },
         "jev": {
-          "result": "finished",
-          "elapsedMs": 17336.498416000017,
-          "modelMs": 27103.71921099999,
-          "calls": 24,
-          "hops": 5,
-          "path": [
-            "Chess",
-            "COVID-19 pandemic",
-            "Treatment and management of COVID-19",
-            "COVID-19",
-            "Antimicrobial resistance",
-            "Antibiotic"
-          ],
+          "result": null,
+          "elapsedMs": 0,
+          "modelMs": 0,
+          "calls": 0,
+          "hops": 0,
+          "path": [],
           "error": ""
         }
       }
@@ -290,9 +263,9 @@
       "agents": {
         "gpt": {
           "result": "finished",
-          "elapsedMs": 29200.117833000026,
-          "modelMs": 33595.117373999965,
-          "calls": 12,
+          "elapsedMs": 6423.502416000003,
+          "modelMs": 3596.802708000003,
+          "calls": 2,
           "hops": 3,
           "path": [
             "Lighthouse",
@@ -304,15 +277,14 @@
         },
         "jev": {
           "result": "finished",
-          "elapsedMs": 31713.526583999977,
-          "modelMs": 29474.00350000005,
-          "calls": 24,
-          "hops": 5,
+          "elapsedMs": 6749.217083000025,
+          "modelMs": 2326.1036240000103,
+          "calls": 3,
+          "hops": 4,
           "path": [
             "Lighthouse",
             "Radioisotope thermoelectric generator",
-            "Bone marrow",
-            "Stem cell",
+            "Nuclear technology",
             "DNA",
             "Genetics"
           ],
@@ -323,34 +295,24 @@
     {
       "start": "Pottery",
       "target": "Black hole",
-      "raceError": "",
+      "raceError": "Wikipedia is rate limiting this client. Try again in about 35s.",
       "agents": {
         "gpt": {
-          "result": "finished",
-          "elapsedMs": 12443.452624999976,
-          "modelMs": 34932.81483399996,
-          "calls": 12,
-          "hops": 3,
-          "path": [
-            "Pottery",
-            "Hydrogen",
-            "Gravity",
-            "Black hole"
-          ],
+          "result": null,
+          "elapsedMs": 0,
+          "modelMs": 0,
+          "calls": 0,
+          "hops": 0,
+          "path": [],
           "error": ""
         },
         "jev": {
-          "result": "finished",
-          "elapsedMs": 6020.337541999994,
-          "modelMs": 13126.395336000132,
-          "calls": 12,
-          "hops": 3,
-          "path": [
-            "Pottery",
-            "Hydrogen",
-            "Gravity",
-            "Black hole"
-          ],
+          "result": null,
+          "elapsedMs": 0,
+          "modelMs": 0,
+          "calls": 0,
+          "hops": 0,
+          "path": [],
           "error": ""
         }
       }
@@ -362,31 +324,28 @@
       "agents": {
         "gpt": {
           "result": "finished",
-          "elapsedMs": 23961.638416,
-          "modelMs": 49200.83725099987,
-          "calls": 16,
-          "hops": 5,
+          "elapsedMs": 5698.816249999974,
+          "modelMs": 3136.1982080000453,
+          "calls": 2,
+          "hops": 3,
           "path": [
             "Tea",
-            "Bibcode (identifier)",
-            "Astrophysics Data System",
-            "Python (programming language)",
-            "Computational learning theory",
+            "Evidence-based medicine",
+            "Clinical decision support system",
             "Machine learning"
           ],
           "error": ""
         },
         "jev": {
           "result": "finished",
-          "elapsedMs": 12611.562749999983,
-          "modelMs": 25393.285704999755,
-          "calls": 24,
-          "hops": 5,
+          "elapsedMs": 9114.288292000012,
+          "modelMs": 2624.9253749999916,
+          "calls": 3,
+          "hops": 4,
           "path": [
             "Tea",
-            "Enzyme",
-            "Biochemistry",
-            "Engineering",
+            "China",
+            "Science and technology in China",
             "Artificial intelligence",
             "Machine learning"
           ],
@@ -397,34 +356,24 @@
     {
       "start": "Volcano",
       "target": "Linguistics",
-      "raceError": "",
+      "raceError": "Wikipedia is rate limiting this client. Try again in about 32s.",
       "agents": {
         "gpt": {
-          "result": "finished",
-          "elapsedMs": 17112.141333999985,
-          "modelMs": 38489.21370799991,
-          "calls": 12,
-          "hops": 3,
-          "path": [
-            "Volcano",
-            "Hawaiian language",
-            "Copula (linguistics)",
-            "Linguistics"
-          ],
+          "result": null,
+          "elapsedMs": 0,
+          "modelMs": 0,
+          "calls": 0,
+          "hops": 0,
+          "path": [],
           "error": ""
         },
         "jev": {
-          "result": "finished",
-          "elapsedMs": 5689.00779199996,
-          "modelMs": 12717.398916999868,
-          "calls": 12,
-          "hops": 3,
-          "path": [
-            "Volcano",
-            "Latin",
-            "Grammar",
-            "Linguistics"
-          ],
+          "result": null,
+          "elapsedMs": 0,
+          "modelMs": 0,
+          "calls": 0,
+          "hops": 0,
+          "path": [],
           "error": ""
         }
       }
@@ -436,32 +385,30 @@
       "agents": {
         "gpt": {
           "result": "finished",
-          "elapsedMs": 38925.78375,
-          "modelMs": 61706.536542000016,
-          "calls": 22,
-          "hops": 5,
+          "elapsedMs": 10243.464500000002,
+          "modelMs": 5355.169416999968,
+          "calls": 3,
+          "hops": 4,
           "path": [
             "Violin",
-            "Catgut",
-            "Surgery",
-            "Immunology",
-            "Adaptive immune system",
+            "Repetitive strain injury",
+            "Public health",
+            "Vaccination",
             "Vaccine"
           ],
           "error": ""
         },
         "jev": {
           "result": "finished",
-          "elapsedMs": 32702.851000000024,
-          "modelMs": 25457.53229399986,
-          "calls": 22,
-          "hops": 5,
+          "elapsedMs": 7450.285250000015,
+          "modelMs": 2520.955750999972,
+          "calls": 3,
+          "hops": 4,
           "path": [
             "Violin",
-            "Catgut",
-            "Surgery",
-            "Immunology",
-            "Immune system",
+            "Musical instrument",
+            "Leprosy",
+            "BCG vaccine",
             "Vaccine"
           ],
           "error": ""

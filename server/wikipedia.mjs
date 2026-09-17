@@ -5,9 +5,10 @@ const USER_AGENT = "WikiRaceDemo/1.0 (local demo; fair AI navigation benchmark)"
 const REQUEST_TIMEOUT_MS = 15_000;
 const MAX_ATTEMPTS = 3;
 const BASE_BACKOFF_MS = 1_000;
-// Wikipedia typically asks for 15-25s when it throttles, so absorb that rather than failing the race.
-// Past this, waiting would stall longer than it is worth; fail with the wait time instead.
-const RETRY_AFTER_CAP_MS = 30_000;
+// How long we are willing to sit out a throttle. A live race should fail fast
+// rather than freeze a browser tab; a benchmark can afford to wait, so this is
+// configurable. Past the cap we fail with the wait time instead.
+const RETRY_AFTER_CAP_MS = Number(process.env.WIKI_RETRY_AFTER_CAP_MS || 30_000);
 const RETRYABLE_STATUS = new Set([429, 503]);
 const pageCache = new Map();
 

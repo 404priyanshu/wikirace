@@ -1,7 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { runRace } from "../server/race-engine.mjs";
+// A benchmark can afford to sit out a Wikipedia throttle; the live app cannot.
+// Must be set before the module reads it at import time.
+process.env.WIKI_RETRY_AFTER_CAP_MS ||= "120000";
+
+const { runRace } = await import("../server/race-engine.mjs");
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -22,7 +26,7 @@ const PAIRS = [
 
 const MAX_HOPS = Number(process.env.BENCH_MAX_HOPS || 12);
 // Wikipedia throttles hard when races run back to back; pace between them.
-const GAP_MS = Number(process.env.BENCH_GAP_MS || 20_000);
+const GAP_MS = Number(process.env.BENCH_GAP_MS || 30_000);
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function blankAgent() {
