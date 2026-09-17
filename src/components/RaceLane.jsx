@@ -37,13 +37,12 @@ export function RaceLane({ agentId, label, subtitle, agent, target, winner }) {
       </header>
 
       <div className="timer-wrap">
-        <span className="timer-label">WALL CLOCK</span>
+        <span className="timer-label">
+          DECISION TIME
+          <em>page loads excluded</em>
+        </span>
         <div className="timer">
-          <LiveTimer
-            startedAt={agent.startedAt}
-            elapsedMs={agent.elapsedMs}
-            running={running}
-          />
+          <LiveTimer elapsedMs={agent.elapsedMs} />
         </div>
         <p className={`agent-status ${agent.phase === "error" ? "is-error" : ""}`}>
           <Bot aria-hidden="true" size={14} />
@@ -61,8 +60,8 @@ export function RaceLane({ agentId, label, subtitle, agent, target, winner }) {
           <strong>{String(agent.calls).padStart(2, "0")}</strong>
         </div>
         <div>
-          <span>MODEL TIME</span>
-          <strong>{formatCompact(agent.modelMs)}</strong>
+          <span>PAGE WAIT</span>
+          <strong>{formatCompact(agent.fetchMs)}</strong>
         </div>
       </div>
 

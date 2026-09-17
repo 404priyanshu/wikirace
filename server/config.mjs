@@ -17,6 +17,9 @@ export const config = {
   // Hosted platforms route to the container, so only bind loopback in local dev.
   host: process.env.HOST || (process.env.NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1"),
   openaiApiKey: process.env.OPENAI_API_KEY || "",
+  // Sol's reasoning level. "none" makes it a pure classifier; "low" and above
+  // engage the feature it is actually sold for. Benchmarks report which was used.
+  gptReasoningEffort: process.env.GPT_REASONING_EFFORT || "none",
   typesafeApiKey:
     process.env.TYPESAFE_API_KEY ||
     process.env.typesafe_api_key ||

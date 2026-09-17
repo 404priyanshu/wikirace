@@ -263,9 +263,18 @@ button { color: inherit; }
 .lane-state--error i { background: var(--danger); }
 .timer-wrap { padding: 23px 0 22px; border-bottom: 1px solid var(--line-soft); }
 .timer-label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   color: #666f7a;
   font: 600 8px/1 "JetBrains Mono Variable", monospace;
   letter-spacing: .16em;
+}
+.timer-label em {
+  color: #4d5660;
+  font: 500 7px/1 "JetBrains Mono Variable", monospace;
+  font-style: normal;
+  letter-spacing: .08em;
 }
 .timer {
   margin-top: 5px;

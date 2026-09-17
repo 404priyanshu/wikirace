@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo } from "react";
 
 function formatTime(milliseconds) {
   const safe = Math.max(0, milliseconds || 0);
@@ -8,22 +8,13 @@ function formatTime(milliseconds) {
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${String(centiseconds).padStart(2, "0")}`;
 }
 
-export const LiveTimer = memo(function LiveTimer({ startedAt, elapsedMs, running }) {
-  const [now, setNow] = useState(Date.now());
-
-  useEffect(() => {
-    if (!running || !startedAt) return undefined;
-    let frame;
-    const tick = () => {
-      setNow(Date.now());
-      frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [running, startedAt]);
-
-  const shown = running && startedAt ? now - startedAt : elapsedMs;
-  return <span>{formatTime(shown)}</span>;
+/**
+ * The clock only advances while a model is deciding, so there is nothing to
+ * animate between hops. Showing a smooth wall-clock tick here would be a lie:
+ * most of that time is Wikipedia serving pages, which the race does not score.
+ */
+export const LiveTimer = memo(function LiveTimer({ elapsedMs }) {
+  return <span>{formatTime(elapsedMs)}</span>;
 });
 
 export function formatCompact(milliseconds) {

@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 process.env.WIKI_RETRY_AFTER_CAP_MS ||= "120000";
 
 const { runRace } = await import("../server/race-engine.mjs");
+const { config } = await import("../server/config.mjs");
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -25,12 +26,13 @@ const PAIRS = [
 ];
 
 const MAX_HOPS = Number(process.env.BENCH_MAX_HOPS || 12);
+const LABEL = process.env.BENCH_LABEL || `gpt-${config.gptReasoningEffort}`;
 // Wikipedia throttles hard when races run back to back; pace between them.
 const GAP_MS = Number(process.env.BENCH_GAP_MS || 30_000);
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function blankAgent() {
-  return { result: null, elapsedMs: 0, modelMs: 0, calls: 0, hops: 0, path: [], error: "" };
+  return { result: null, elapsedMs: 0, modelMs: 0, fetchMs: 0, retries: 0, calls: 0, hops: 0, path: [], error: "" };
 }
 
 async function race(start, target) {
@@ -52,6 +54,8 @@ async function race(start, target) {
           elapsedMs: event.elapsedMs,
           modelMs: event.modelMs,
           calls: event.calls,
+          fetchMs: event.fetchMs,
+          retries: event.retries,
           path: event.path,
           hops: Math.max(0, event.path.length - 1),
         });
@@ -84,6 +88,7 @@ function summarise(rows, id) {
     finishRate: ran.length ? finished.length / ran.length : 0,
     medianSeconds: median(finished.map((r) => r.agents[id].elapsedMs)) / 1000,
     medianHops: median(finished.map((r) => r.agents[id].hops)),
+    retries: rows.reduce((sum, r) => sum + (r.agents[id].retries || 0), 0),
     medianMsPerCall: median(
       ran.filter((r) => r.agents[id].calls > 0).map((r) => r.agents[id].modelMs / r.agents[id].calls),
     ),
@@ -119,6 +124,10 @@ const jevWins = bothFinished.filter((r) => r.agents.jev.elapsedMs < r.agents.gpt
 
 const summary = {
   ranAt: new Date().toISOString(),
+  label: LABEL,
+  gptReasoningEffort: config.gptReasoningEffort,
+  maxLinks: Number(process.env.MAX_LINKS || 255),
+  clock: "decision time only; page fetches excluded",
   maxHops: MAX_HOPS,
   pairs: PAIRS.length,
   bothFinished: bothFinished.length,
@@ -130,6 +139,6 @@ const summary = {
 
 console.log(`\n${JSON.stringify(summary, null, 2)}`);
 
-const outPath = path.join(dirname, "results.json");
+const outPath = path.join(dirname, `results-${LABEL}.json`);
 fs.writeFileSync(outPath, `${JSON.stringify({ summary, rows }, null, 2)}\n`);
 console.log(`\nwrote ${outPath}`);

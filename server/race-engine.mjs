@@ -20,7 +20,7 @@ async function selectLink({ agentId, current, target, links, emit, signal }) {
   const direct = links.find((link) => normalize(link) === normalize(target));
   if (direct) {
     emit({ type: "agent_status", agentId, status: "Target link found on page" });
-    return { choice: direct, calls: 0, modelMs: 0 };
+    return { choice: direct, calls: 0, modelMs: 0, retries: 0 };
   }
 
   const choices = links.slice(0, MAX_LINKS);
@@ -32,14 +32,24 @@ async function selectLink({ agentId, current, target, links, emit, signal }) {
   emit({ type: "agent_status", agentId, status: `Judging ${choices.length} links` });
   const result = await agents[agentId].choose({ current, target, choices });
   emit({ type: "agent_call", agentId, calls: 1, modelMs: result.elapsedMs });
-  return { choice: result.choice, calls: 1, modelMs: result.elapsedMs };
+  return {
+    choice: result.choice,
+    calls: 1,
+    modelMs: result.elapsedMs,
+    retries: result.retries || 0,
+  };
 }
 
 async function runAgent({ agentId, start, target, maxHops, emit, signal }) {
   const startedAt = performance.now();
   let current = start;
   let calls = 0;
-  let modelMs = 0;
+  // The race clock. Only time spent deciding counts: page loads are the
+  // environment, identical for both racers and dominated by Wikipedia's mood.
+  // They are measured separately so the cost stays visible without scoring it.
+  let decisionMs = 0;
+  let fetchMs = 0;
+  let retries = 0;
   const path = [start];
   const visited = new Set([normalize(start)]);
 
@@ -52,6 +62,8 @@ async function runAgent({ agentId, start, target, maxHops, emit, signal }) {
       result: "finished",
       elapsedMs: 0,
       modelMs: 0,
+      fetchMs: 0,
+      wallMs: 0,
       calls: 0,
       path,
     });
@@ -61,7 +73,9 @@ async function runAgent({ agentId, start, target, maxHops, emit, signal }) {
   for (let hop = 1; hop <= maxHops; hop += 1) {
     if (signal.aborted) throw new Error("Race cancelled");
     emit({ type: "agent_status", agentId, status: `Reading ${current}` });
+    const fetchStartedAt = performance.now();
     const page = await getArticle(current, { signal });
+    fetchMs += performance.now() - fetchStartedAt;
     const eligible = page.links.filter((link) => !visited.has(normalize(link)));
     const selected = await selectLink({
       agentId,
@@ -72,20 +86,23 @@ async function runAgent({ agentId, start, target, maxHops, emit, signal }) {
       signal,
     });
     calls += selected.calls;
-    modelMs += selected.modelMs;
+    decisionMs += selected.modelMs;
+    retries += selected.retries;
     current = selected.choice;
     visited.add(normalize(current));
     path.push(current);
 
-    const elapsedMs = performance.now() - startedAt;
     emit({
       type: "agent_move",
       agentId,
       article: current,
       hop,
       calls,
-      modelMs,
-      elapsedMs,
+      modelMs: decisionMs,
+      elapsedMs: decisionMs,
+      fetchMs,
+      retries,
+      wallMs: performance.now() - startedAt,
       path,
     });
 
@@ -94,8 +111,11 @@ async function runAgent({ agentId, start, target, maxHops, emit, signal }) {
         type: "agent_complete",
         agentId,
         result: "finished",
-        elapsedMs,
-        modelMs,
+        elapsedMs: decisionMs,
+        modelMs: decisionMs,
+        fetchMs,
+        retries,
+        wallMs: performance.now() - startedAt,
         calls,
         path,
       });
@@ -107,8 +127,11 @@ async function runAgent({ agentId, start, target, maxHops, emit, signal }) {
     type: "agent_complete",
     agentId,
     result: "max_hops",
-    elapsedMs: performance.now() - startedAt,
-    modelMs,
+    elapsedMs: decisionMs,
+    modelMs: decisionMs,
+    fetchMs,
+    retries,
+    wallMs: performance.now() - startedAt,
     calls,
     path,
   });
